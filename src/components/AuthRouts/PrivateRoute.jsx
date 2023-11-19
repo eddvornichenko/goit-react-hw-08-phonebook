@@ -1,13 +1,13 @@
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from 'hooks';
 
-/**
- * - If the route is private and the user is logged in, render the component
- * - Otherwise render <Navigate> to redirectTo
- */
-
-export const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
+const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
   const { isLoggedIn, isRefreshing } = useAuth();
+
   const shouldRedirect = !isLoggedIn && !isRefreshing;
-  return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
+  // Redirecting to redirectTo if the user is not authorized, otherwise rendering the required Component
+  return shouldRedirect ? <Navigate to={redirectTo} /> : Component; 
 };
+
+export default PrivateRoute;

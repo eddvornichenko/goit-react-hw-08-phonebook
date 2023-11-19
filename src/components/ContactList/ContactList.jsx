@@ -14,25 +14,20 @@ export const ContactList = ({ contacts }) => {
 
   return (
     <ul>
-      {filteredContacts.map(({ id, name, number }) => {
-        return (
-          <>
-
-            <li key={id} className={css.li}>
-              {name}: {number}
-              <Button
-                variant="outlined"
-                color="success"
-                size="small"
-                type="submit"
-                onClick={() => dispatch(deleteContact(id))}
-              >
-                Delete
-              </Button>
-            </li>
-          </>
-        );
-      })}
+      {filteredContacts.map(({ id, name, number }) => (
+        <li key={id} className={css.li}>
+          {name}: {number}
+          <Button
+            variant="outlined"
+            color="success"
+            size="small"
+            type="submit"
+            onClick={() => dispatch(deleteContact(id))}
+          >
+            Delete
+          </Button>
+        </li>
+      ))}
     </ul>
   );
 };
